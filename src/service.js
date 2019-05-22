@@ -17,5 +17,5 @@ export const getRepo = async (url) => {
     });
     lines.overall = encodedLines.length;
     lines.code = lines.overall - lines.empty;
-    console.log(lines);
+    return [lines];
 }
