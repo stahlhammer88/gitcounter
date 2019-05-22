@@ -1,0 +1,1 @@
+export const headerItems = ['file name', 'lines', 'code', 'comments', 'empty'];
