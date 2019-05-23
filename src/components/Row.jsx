@@ -1,16 +1,17 @@
 import React from 'react';
+import {Fade} from 'react-reveal';
 
-const Row = ({lines}) => {
-    const renderItems = () => (
-        lines.map((item, i) => (
-            <div key={i} className="counter__row-item">{item}</div>
-        ))
-    )
-
+const Row = ({fileName, overall, empty, code, comment}) => {        
     return (
-        <div className="counter__row">
-            {renderItems()}
-        </div>
+        <Fade bottom>
+            <div className="counter__row">
+                <div className="counter__row-item counter__row-item--name">{fileName}</div>
+                <div className="counter__row-item">{overall}</div>
+                <div className="counter__row-item">{code}</div>
+                <div className="counter__row-item">{comment}</div>
+                <div className="counter__row-item">{empty}</div>
+            </div>
+        </Fade>
     );
 };
 
