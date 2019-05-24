@@ -1,15 +1,17 @@
 import React from 'react';
 
-const SortButton = ({_id, index, name, clickHandler, sortType, sortKey}) => {
+const SortButton = props => {
+    const {index, name, sortKey, sortType, handleClick} = props;   
+    
     return (
-        <div 
-            key={_id} 
+        <div            
             className={`counter__row-item ${sortKey === index ? `selected ${sortType}` : ''}`} 
-            onClick={() => clickHandler(index)}>
-
+            onClick={() => handleClick(index)}>
             <span>{name}</span>
         </div>
     );
 };
+
+
 
 export default SortButton;

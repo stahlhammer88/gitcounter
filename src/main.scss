@@ -59,11 +59,11 @@ h1 {
     }
 }
 
-.input {
+.input-container {
     display: flex;
     justify-content: space-between;
     margin-bottom: 15px;
-    position: relative;
+    position: relative;    
 
     input {     
         @extend .counter-input;        
@@ -74,6 +74,53 @@ h1 {
         &:focus {
             box-shadow: 0 0 0 2px $nice-orange;
         }
+    }
+}
+
+.input {
+    width: 100%;    
+    position: relative;
+
+    &__error {
+        position: absolute;
+        background: #fff;
+        top: -40px;
+        padding: 10px 30px;
+        border-radius: 5px;
+        box-shadow: 0 0 8px 2px rgba(0,0,0,0.2);
+        color: $nice-orange;
+        right: 43%;
+    }
+
+    &__cancel {
+        width: 20px;
+        height: 20px;
+        background: url('/img/cancel.svg') no-repeat;
+        background-size: cover;
+        position: absolute;        
+        opacity: .2;
+        cursor: pointer;
+        transition: all .2s ease;
+
+        &:hover {
+            opacity: .3;
+        }
+    }
+
+    #input-url {
+        width: calc(100% - 15px);
+
+        +.input__cancel {
+            right: 35px;
+            top: 20px;
+        }
+    }
+
+    #input-filter + .input__cancel {
+        right: 15px;
+        top: 12px;
+        width: 15px;
+        height: 15px;
     }
 }
 
@@ -149,20 +196,23 @@ h1 {
         width: 20%;
         text-align: center;
 
+        span {
+            position: relative;
+            display: inline-block;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
         &.selected {
             font-weight: 600;
 
             &.asc, &.desc {
 
-                span {
-                    position: relative;
-                    display: inline-block;
-                    -webkit-touch-callout: none;
-                    -webkit-user-select: none;
-                    -khtml-user-select: none;
-                    -moz-user-select: none;
-                    -ms-user-select: none;
-                    user-select: none;
+                span {                    
 
                     &::after {
                         content: '';
@@ -195,16 +245,5 @@ h1 {
                 border-color: darken($color: $input-border, $amount: 15)
             }
         }
-    }
-
-    &__error {
-        position: absolute;
-        background: #fff;
-        top: -40px;
-        padding: 10px 30px;
-        border-radius: 5px;
-        box-shadow: 0 0 8px 2px rgba(0,0,0,0.2);
-        color: $nice-orange;
-        right: 43%;
-    }
+    }    
 }

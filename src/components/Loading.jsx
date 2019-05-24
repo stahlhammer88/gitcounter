@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactLoading from 'react-loading';
 import {Fade} from 'react-reveal';
+import { connect } from 'react-redux';
 
-const Loading = () => {
+const Loading = (props) => {
+    const {loading} = props;
+
+    if (!loading) return null;
     return (
         <Fade>
             <div className="counter__loading">
@@ -12,4 +16,10 @@ const Loading = () => {
     );
 };
 
-export default Loading;
+const mapStateToProps = state => {        
+    return {        
+        loading: state.loading
+    }
+}
+
+export default connect(mapStateToProps)(Loading);
